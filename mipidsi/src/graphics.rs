@@ -2,6 +2,7 @@ use embedded_graphics_core::prelude::{DrawTarget, Point, RgbColor, Size};
 use embedded_graphics_core::primitives::Rectangle;
 use embedded_graphics_core::{prelude::OriginDimensions, Pixel};
 use embedded_hal::digital::v2::OutputPin;
+use esp_println::println;
 
 use crate::dcs::BitsPerPixel;
 use crate::models::Model;
@@ -46,6 +47,7 @@ where
     where
         I: IntoIterator<Item = Self::Color>,
     {
+        println!("fill contiguous");
         if let Some(bottom_right) = area.bottom_right() {
             let mut count = 0u32;
             let max = area.size.width * area.size.height;
